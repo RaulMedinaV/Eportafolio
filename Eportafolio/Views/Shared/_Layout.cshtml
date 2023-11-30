@@ -1,7 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
@@ -18,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Portafolio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -26,15 +28,31 @@
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        @*Opciones de administrador*@
-                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    }
 
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">Panel de control <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>@Html.ActionLink("Contacto", "index", "Contacto", null, new { id = "item 1" })</li>
+                        <li>@Html.ActionLink("Curriculum", "index", "Curriculum", null, new { id = "item 2" })</li>
+                        <li>@Html.ActionLink("Calendario", "index", "Calendars", null, new { id = "item 3" })</li>
+                        <li>@Html.ActionLink("Acercas", "index", "Acercas", null, new { id = "item 4" })</li>
+                        <li>@Html.ActionLink("Proyecto", "index", "Proyecto", null, new { id = "item 5" })</li>
+                    </ul>
+                </li>
+
+
+
+
+            }
+
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
         </div>
     </div>
     <div class="container body-content">
